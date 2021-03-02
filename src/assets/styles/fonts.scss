@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNext\ Bold.woff2") format("woff2"),
+    url("../fonts/AvenirNext\ Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNext\ \ Regular.woff2") format("woff2"),
+    url("../fonts/AvenirNext\ Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNext\ \ Light.woff2") format("woff2"),
+    url("../fonts/AvenirNext\ \ Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
