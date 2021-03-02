@@ -1,7 +1,12 @@
-@import "./var.scss";
+@import "@/assets/styles/var.scss";
 @import "./fonts.scss";
 
 * {
   box-sizing: border-box;
-  font-family: "AvenirNext";
+  font-family: $main-font;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }

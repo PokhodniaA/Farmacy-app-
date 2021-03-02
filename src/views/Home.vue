@@ -1,15 +1,29 @@
 <template>
-  <div class="home">Привет. игру</div>
+  <div class="home">
+    <enterRound class="home__round" />
+  </div>
 </template>
 
 <script>
+import enterRound from "@/components/Home/enterRound.vue";
 export default {
-  components: {},
+  components: { enterRound },
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
-  background-image: url(../assets/imgs/bg.png);
+  background-image: url("../assets/imgs/home/bg.jpg");
+  background-size: auto;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+
+  &__round {
+    position: absolute;
+    left: 110px;
+    top: -30px;
+  }
 }
 </style>
