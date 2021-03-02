@@ -4,7 +4,12 @@
 
 <script>
 export default {
-  name: "Home",
   components: {},
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  background-image: url(../assets/imgs/bg.png);
+}
+</style>
