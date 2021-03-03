@@ -17,7 +17,7 @@ export default {
   background-size: auto;
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  min-height: 1024px;
   width: 100%;
 
   &__round {

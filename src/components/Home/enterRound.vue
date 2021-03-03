@@ -3,30 +3,74 @@
     <h6 class="Round__upperText">Добро пожаловать в игру</h6>
     <h1 class="Round__mainText">
       Помоги <br />
-      Фармацевту
+      <span>Фармацевту</span>
     </h1>
+
+    <button class="Round__button" @click="letsStart">Начать</button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    letsStart() {
+      console.log("start");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/var.scss";
+@import "@/assets/styles/mixxins.scss";
 
 .Round {
-  width: 860px;
-  height: 860px;
+  width: 60vw;
+  height: 60vw;
   border-radius: 100%;
   background: $main-gradient;
+  position: relative;
 
   &__upperText {
-    font-size: 35px;
+    @include adaptiv-font(35, 15);
     font-weight: 300;
     line-height: 40.73px;
-    letter-spacing: 2%;
     color: $main-text;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
+
+    position: absolute;
+    left: 22%;
+    top: 32.6%;
+
+    margin: 0;
+  }
+
+  &__mainText {
+    @include adaptiv-font(60, 30);
+    font-weight: 700;
+    line-height: 66.15px;
+    color: $main-text;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
+    -webkit-text-stroke: 1px #000;
+
+    position: absolute;
+    left: 21%;
+    top: 41%;
+
+    margin: 0;
+
+    span {
+      @include adaptiv-font(70, 40);
+      text-transform: uppercase;
+    }
+  }
+
+  &__button {
+    @include mainButton;
+
+    position: absolute;
+    left: 28%;
+    bottom: 19%;
   }
 }
 </style>
