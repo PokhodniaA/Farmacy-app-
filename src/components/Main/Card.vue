@@ -1,12 +1,10 @@
 <template>
   <div class="card">
-    <!-- <img :src="img" :alt="user.name" /> -->
-    <img src="@/assets/imgs/users/0.jpg" />
+    <img :src="imagePath" :alt="user.name" />
     <div class="card__text">
-      <div class="card__title">Валентина, 75 років</div>
+      <div class="card__title">{{ getUserName }}, {{ getUserYear }}</div>
       <div class="card__mainText">
-        Дитя, дай бабусі ліки від тиску за цим рецептом, але не дорогих, тих, що
-        дешевші!
+        {{ user.description }}
       </div>
     </div>
   </div>
@@ -14,11 +12,35 @@
 
 <script>
 export default {
-  //   computed: {
-  //     img() {
-  //       return `@/assets/imgs/users/${user.id}.jpg`; // поправить
-  //     },
-  //   },
+  methods: {
+    declension(number, txt) {
+      var cases = [2, 0, 1, 1, 1, 2];
+      return txt[
+        number % 100 > 4 && number % 100 < 20
+          ? 2
+          : cases[number % 10 < 5 ? number % 10 : 5]
+      ];
+    },
+  },
+  computed: {
+    imagePath() {
+      const user = this.user.id;
+      return require(`@/assets/imgs/users/${user}.png`);
+    },
+    getUserName() {
+      return this.user.name.slice(0, 1).toUpperCase() + this.user.name.slice(1);
+    },
+    getUserYear() {
+      return `${this.user.age} ${this.declension(this.user.age, [
+        "рік",
+        "роки",
+        "років",
+      ])}`;
+    },
+  },
+  props: {
+    user: Object,
+  },
 };
 </script>
 
@@ -56,7 +78,7 @@ export default {
     margin-top: 17px;
     color: $dark-text;
     font-size: 24px;
-    line-height: 20px;
+    line-height: 25px;
   }
 }
 </style>

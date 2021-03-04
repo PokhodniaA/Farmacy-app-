@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <Sidebar class="main__sidebar" />
-    <Game class="main__content" />
+    <Game class="main__content" :users="users" />
   </div>
 </template>
 
@@ -9,8 +9,28 @@
 import Sidebar from "@/components/Main/Sidebar.vue";
 import Game from "@/components/Main/Game.vue";
 
+import { mapGetters, mapMutations } from "vuex";
+import data from "@/assets/users/users.json";
+
 export default {
+  data: () => ({ users: [] }),
+  methods: {
+    ...mapMutations(["setUsers"]),
+  },
+  computed: mapGetters(["getUsersLength", "getUsers"]),
   components: { Sidebar, Game },
+  created() {
+    this.users = this.getUsersLength ? this.getUsers : data;
+
+    if (this.getUsersLength) {
+      this.users = this.getUsers;
+    } else {
+      this.users = data;
+      this.setUsers(data);
+    }
+
+    console.log(this.users, "users");
+  },
 };
 </script>
 

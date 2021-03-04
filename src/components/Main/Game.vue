@@ -1,11 +1,11 @@
 <template>
   <div class="game">
     <div class="game__field">
-      <Card class="game__card" />
+      <Card class="game__card" :user="users[getCurrentCard]" />
     </div>
 
     <div class="game__actions">
-      <button class="game__button purple">Препарат 1</button>
+      <button class="game__button purple" @click="nextCard">Препарат 1</button>
       <button class="game__button blue">Препарат 2</button>
       <button class="game__button yellow">Препарат 3</button>
     </div>
@@ -15,9 +15,21 @@
 <script>
 import Card from "@/components/Main/Card.vue";
 
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
+  methods: {
+    ...mapMutations(["showNextCard"]),
+    nextCard() {
+      this.showNextCard();
+    },
+  },
+  computed: mapGetters(["getCurrentCard"]),
   components: {
     Card,
+  },
+  props: {
+    users: Array,
   },
 };
 </script>
