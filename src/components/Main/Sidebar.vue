@@ -129,6 +129,7 @@ export default {
 
   &__cardCounter {
     color: #424242;
+    font-weight: 700;
     font-size: 48px;
     line-height: 59px;
     margin-right: 50px - 10px;

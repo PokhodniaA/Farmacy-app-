@@ -27,6 +27,24 @@
   }
 }
 
+@mixin gameButton {
+  @include adaptiv-font(28, 15);
+
+  width: 29%;
+  height: 90px;
+  border-radius: 100px;
+
+  border: none;
+  outline: none;
+
+  color: $main-text;
+  font-weight: 700;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 // Font
 
 @mixin adaptiv-font($pcSize, $mobSize) {

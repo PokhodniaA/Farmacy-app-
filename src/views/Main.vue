@@ -1,15 +1,16 @@
 <template>
   <div class="main">
     <Sidebar class="main__sidebar" />
-    <div class="main__content">sdsfd</div>
+    <Game class="main__content" />
   </div>
 </template>
 
 <script>
 import Sidebar from "@/components/Main/Sidebar.vue";
+import Game from "@/components/Main/Game.vue";
 
 export default {
-  components: { Sidebar },
+  components: { Sidebar, Game },
 };
 </script>
 
