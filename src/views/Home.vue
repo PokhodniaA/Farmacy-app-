@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <enterRound class="home__round" />
+    <EnterRound class="home__round" />
   </div>
 </template>
 
 <script>
-import enterRound from "@/components/Home/enterRound.vue";
+import EnterRound from "@/components/Home/EnterRound.vue";
 export default {
-  components: { enterRound },
+  components: { EnterRound },
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
-  background-image: url("../assets/imgs/home/bg.jpg");
+  background: url("../assets/imgs/home/bg.jpg") no-repeat center;
   background-size: auto;
   position: relative;
   overflow: hidden;

@@ -2,7 +2,9 @@
 @import "@/assets/styles/mixxins.scss";
 @import "./fonts.scss";
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   font-family: $main-font;
 }

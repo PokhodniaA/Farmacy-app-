@@ -14,7 +14,7 @@
 export default {
   methods: {
     letsStart() {
-      console.log("start");
+      this.$router.push("/main");
     },
   },
 };
