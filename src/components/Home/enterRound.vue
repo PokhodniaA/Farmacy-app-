@@ -6,17 +6,15 @@
       <span>Фармацевту</span>
     </h1>
 
-    <button class="Round__button" @click="letsStart">Начать</button>
+    <button class="Round__button" @click="toMainPage">Начать</button>
   </div>
 </template>
 
 <script>
+import routersMixin from "@/mixins/routers.js";
+
 export default {
-  methods: {
-    letsStart() {
-      this.$router.push("/main");
-    },
-  },
+  mixins: [routersMixin],
 };
 </script>
 

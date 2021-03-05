@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Main from "../views/Main.vue";
+import Final from "../views/Final.vue";
+
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,11 @@ const routes = [
     path: "/main",
     name: "Main",
     component: Main
+  },
+  {
+    path: "/final",
+    name: "Final",
+    component: Final
   },
   // {
   //   path: "/about",

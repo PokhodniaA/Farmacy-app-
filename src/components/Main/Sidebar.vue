@@ -1,11 +1,11 @@
 <template>
   <div class="sidebar">
     <NavButtons>
-      <button class="sidebar__btn">
+      <button class="sidebar__btn" @click="toHomePage">
         <img src="@/assets/imgs/icons/Home.png" />
       </button>
 
-      <button class="sidebar__btn">
+      <button class="sidebar__btn" @click="retryGame">
         <img src="@/assets/imgs/icons/Retry.png" />
       </button>
     </NavButtons>
@@ -15,24 +15,27 @@
       <div class="sidebar__cards">
         <div class="sidebar__card">
           <img src="@/assets/imgs/icons/Sad_smile.png" />
-          <div class="sidebar__cardCounter">1</div>
+          <div class="sidebar__cardCounter">{{ getCounters.sad }}</div>
         </div>
 
         <div class="sidebar__card">
           <img src="@/assets/imgs/icons/Happy_smile.png" />
-          <div class="sidebar__cardCounter">1</div>
+          <div class="sidebar__cardCounter">{{ getCounters.happy }}</div>
         </div>
 
         <div class="sidebar__card">
           <img src="@/assets/imgs/icons/Heart_icon.png" />
-          <div class="sidebar__cardCounter">1</div>
+          <div class="sidebar__cardCounter">{{ getCounters.heart }}</div>
         </div>
       </div>
     </div>
 
     <footer class="sidebar__footer">
       <div class="sidebar__footerText">Осталось в очереди:</div>
-      <div class="sidebar__counter"><b>14</b>/15</div>
+      <div class="sidebar__counter">
+        <b>{{ getCurrentCard + 1 }}</b
+        >/{{ getUsersLength }}
+      </div>
     </footer>
   </div>
 </template>
@@ -40,8 +43,14 @@
 <script>
 import NavButtons from "@/components/Common/NavButtons.vue";
 
+import { mapGetters, mapMutations } from "vuex";
+import routersMixin from "@/mixins/routers.js";
+
 export default {
   components: { NavButtons },
+  methods: mapMutations(["retryGame"]),
+  computed: mapGetters(["getUsersLength", "getCurrentCard", "getCounters"]),
+  mixins: [routersMixin],
 };
 </script>
 
