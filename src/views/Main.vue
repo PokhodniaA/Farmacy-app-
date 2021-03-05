@@ -28,8 +28,6 @@ export default {
       this.users = data;
       this.setUsers(data);
     }
-
-    console.log(this.users, "users");
   },
 };
 </script>

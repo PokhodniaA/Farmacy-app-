@@ -6,11 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: [],
-    currentCard: 0,
     counters: {
       sad: 0,
       happy: 0,
-      heart: 0
+      heart: 0,
+      sum: 0
     }
   },
   mutations: {
@@ -21,22 +21,20 @@ export default new Vuex.Store({
       state.currentCard++
     },
     increaseCounter(state, key) {
-      state.counters[key]++ // возможно сделать проверку
+      state.counters[key]++
+      state.counters.sum++ // возможно сделать проверку
     },
     retryGame(state) {
-      state.currentCard = 0;
       state.counters = {
         sad: 0,
         happy: 0,
-        heart: 0
+        heart: 0,
+        sum: 0
       }
     }
   },
   actions: {},
   getters: {
-    getCurrentCard(state) {
-      return state.currentCard < state.users.length ? state.currentCard : 0;
-    },
     getUsers(state) {
       return state.users
     },

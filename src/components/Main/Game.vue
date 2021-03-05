@@ -15,6 +15,8 @@
 <script>
 import Card from "@/components/Main/Card.vue";
 
+import routersMixin from "@/mixins/routers.js";
+
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
@@ -39,13 +41,19 @@ export default {
     },
     nextCard(event) {
       const actions = this.buttonsActions();
+      const isLastUser = this.getCurrentCard == this.getUsersLength - 1;
       // Возможно переделать в конструкцию if-else
       try {
         const value = event.target.attributes["data-btn"].nodeValue;
-        const isLastUser = this.getCurrentCard == this.getUsersLength - 1;
-        actions[value]();
+
+        if (this.getCounters.sum < this.getUsersLength) {
+          actions[value]();
+        }
+
         if (!isLastUser) {
           this.showNextCard();
+        } else {
+          this.showResults();
         } // else выполнить другой метод для перехода к final
       } catch (error) {
         if (error.name !== "TypeError") {
@@ -53,15 +61,25 @@ export default {
         }
       }
     },
+    showResults() {
+      if (this.getCurrentCard == this.getUsersLength) {
+        this.toFinalPage();
+      }
+    },
   },
-  computed: mapGetters(["getCurrentCard", "getUsersLength"]),
-
+  computed: {
+    ...mapGetters(["getUsersLength", "getCounters"]),
+    getCurrentCard() {
+      return this.getCounters.sum;
+    },
+  },
   components: {
     Card,
   },
   props: {
     users: Array,
   },
+  mixins: [routersMixin],
 };
 </script>
 

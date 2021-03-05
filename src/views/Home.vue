@@ -14,10 +14,11 @@ export default {
 <style lang="scss" scoped>
 .home {
   background: url("../assets/imgs/home/bg.jpg") no-repeat center;
-  background-size: auto;
+  background-size: cover;
   position: relative;
   overflow: hidden;
   min-height: 1024px;
+  height: 100vh;
   width: 100%;
 
   &__round {

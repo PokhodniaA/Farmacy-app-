@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <NavButtons>
-      <button class="sidebar__btn" @click="toHomePage">
+      <button class="sidebar__btn" @click="toHome">
         <img src="@/assets/imgs/icons/Home.png" />
       </button>
 
@@ -33,7 +33,7 @@
     <footer class="sidebar__footer">
       <div class="sidebar__footerText">Осталось в очереди:</div>
       <div class="sidebar__counter">
-        <b>{{ getCurrentCard + 1 }}</b
+        <b>{{ getUsersLength - getCounters.sum }}</b
         >/{{ getUsersLength }}
       </div>
     </footer>
@@ -48,8 +48,15 @@ import routersMixin from "@/mixins/routers.js";
 
 export default {
   components: { NavButtons },
-  methods: mapMutations(["retryGame"]),
-  computed: mapGetters(["getUsersLength", "getCurrentCard", "getCounters"]),
+  methods: {
+    ...mapMutations(["retryGame"]),
+    toHome() {
+      this.retryGame();
+      this.toHomePage();
+    },
+  },
+
+  computed: mapGetters(["getUsersLength", "getCounters"]),
   mixins: [routersMixin],
 };
 </script>
