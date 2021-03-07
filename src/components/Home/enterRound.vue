@@ -31,17 +31,20 @@ export default {
 @import "@/assets/styles/mixxins.scss";
 
 .Round {
-  width: 60vw;
-  height: 60vw;
+  width: 60vmax;
+  height: 60vmax;
+  // min-width: 600px;
+  // min-height: 600px;
   border-radius: 100%;
   background: $main-gradient;
   position: relative;
 
   &__upperText {
-    @include adaptiv-font(35, 15);
+    // @include adaptiv-font(35, 25);
     font-weight: 300;
     line-height: 40.73px;
     color: $main-text;
+    font-size: 25px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
 
     position: absolute;
@@ -49,13 +52,19 @@ export default {
     top: 32.6%;
 
     margin: 0;
+
+    @media screen and (min-width: 768px) {
+      @include adaptiv-font(35, 25);
+    }
   }
 
   &__mainText {
-    @include adaptiv-font(60, 30);
+    // @include adaptiv-font(60, 40);
+
     font-weight: 700;
-    line-height: 66.15px;
+    line-height: 50px;
     color: $main-text;
+    font-size: 40px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
     -webkit-text-stroke: 1px #000;
 
@@ -65,9 +74,18 @@ export default {
 
     margin: 0;
 
+    @media screen and (min-width: 768px) {
+      @include adaptiv-font(60, 40);
+    }
+
     span {
-      @include adaptiv-font(70, 40);
+      // @include adaptiv-font(70, 50);
+      font-size: 50px;
       text-transform: uppercase;
+
+      @media screen and (min-width: 768px) {
+        @include adaptiv-font(70, 50);
+      }
     }
   }
 

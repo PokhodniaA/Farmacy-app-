@@ -8,6 +8,8 @@
 // Возможно убрать
 #app {
   min-width: 768px;
-  min-height: 1024px;
+  // width: 1440px;
+  height: 100vh;
+  min-height: 700px;
 }
 </style>

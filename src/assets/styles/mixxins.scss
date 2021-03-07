@@ -3,11 +3,12 @@
 // Buttons
 
 @mixin mainButton {
-  @include adaptiv-font(36, 20);
+  // @include adaptiv-font(36, 20);
 
   background-color: #fff;
 
   color: #8e9ad5;
+  font-size: 20px;
   font-family: "Montherat";
   // font-family: Mon; Montherat  скачать
   //   font-size: 36px;
@@ -18,12 +19,20 @@
   margin: 0;
   padding: 27px 0;
   width: 45%;
-  border: none;
 
+  border: none;
   outline: none;
+
+  transition: 0.3s;
 
   &:hover {
     cursor: pointer;
+
+    transform: translateY(-5px);
+  }
+
+  @media screen and (min-width: 768px) {
+    @include adaptiv-font(36, 25);
   }
 }
 
@@ -74,6 +83,8 @@
 }
 
 // Font
+
+// ---Delete---
 
 @mixin adaptiv-font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
