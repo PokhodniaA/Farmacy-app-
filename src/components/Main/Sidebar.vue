@@ -43,21 +43,14 @@
 <script>
 import NavButtons from "@/components/Common/NavButtons.vue";
 
-import { mapGetters, mapMutations } from "vuex";
-import routersMixin from "@/mixins/routers.js";
+import { mapGetters } from "vuex";
+import navButtonsMixin from "@/mixins/navButtons.js";
 
 export default {
   components: { NavButtons },
-  methods: {
-    ...mapMutations(["retryGame"]),
-    toHome() {
-      this.retryGame();
-      this.toHomePage();
-    },
-  },
 
   computed: mapGetters(["getUsersLength", "getCounters"]),
-  mixins: [routersMixin],
+  mixins: [navButtonsMixin],
 };
 </script>
 
@@ -73,17 +66,7 @@ export default {
   // Nav buttons
 
   &__btn {
-    width: 5vw; //70px
-    height: 5vw;
-    border-radius: 100%;
-    border: none;
-    outline: none;
-    background: #fff;
-
-    &:hover {
-      cursor: pointer;
-      background: rgb(236, 236, 236);
-    }
+    @include navButton;
   }
 
   // Counters

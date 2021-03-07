@@ -22,39 +22,32 @@ import { mapGetters, mapMutations } from "vuex";
 export default {
   data: () => ({}),
   methods: {
-    ...mapMutations(["showNextCard", "increaseCounter"]),
+    ...mapMutations(["increaseCounter", "gameOver"]),
     buttonsActions() {
       return {
         sad: () => {
-          console.log("sad");
           this.increaseCounter("sad");
         },
         happy: () => {
-          console.log("happy");
           this.increaseCounter("happy");
         },
         heart: () => {
-          console.log("heart");
           this.increaseCounter("heart");
         },
       };
     },
     nextCard(event) {
-      const actions = this.buttonsActions();
-      const isLastUser = this.getCurrentCard == this.getUsersLength - 1;
       // Возможно переделать в конструкцию if-else
       try {
+        const actions = this.buttonsActions();
         const value = event.target.attributes["data-btn"].nodeValue;
 
-        if (this.getCounters.sum < this.getUsersLength) {
+        if (this.getCurrentCard < this.getUsersLength - 1) {
           actions[value]();
-        }
-
-        if (!isLastUser) {
-          this.showNextCard();
         } else {
+          actions[value]();
           this.showResults();
-        } // else выполнить другой метод для перехода к final
+        }
       } catch (error) {
         if (error.name !== "TypeError") {
           throw error;
@@ -63,6 +56,7 @@ export default {
     },
     showResults() {
       if (this.getCurrentCard == this.getUsersLength) {
+        this.gameOver();
         this.toFinalPage();
       }
     },
@@ -110,7 +104,7 @@ export default {
   }
 
   &__button {
-    @include gameButton;
+    @include additionButton();
   }
 }
 

@@ -6,14 +6,22 @@
       <span>Фармацевту</span>
     </h1>
 
-    <button class="Round__button" @click="toMainPage">Начать</button>
+    <button class="Round__button" @click="letsStart">Начать</button>
   </div>
 </template>
 
 <script>
 import routersMixin from "@/mixins/routers.js";
+import { mapMutations } from "vuex";
 
 export default {
+  methods: {
+    ...mapMutations(["startGame"]),
+    letsStart() {
+      this.startGame();
+      this.toMainPage();
+    },
+  },
   mixins: [routersMixin],
 };
 </script>

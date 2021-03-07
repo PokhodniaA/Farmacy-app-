@@ -27,11 +27,17 @@
   }
 }
 
-@mixin gameButton {
-  @include adaptiv-font(28, 15);
+@mixin additionButton(
+  $pcSize: 28,
+  $mobSize: 15,
+  $width: 29%,
+  $height: 90px,
+  $background: $grey-gradient
+) {
+  @include adaptiv-font($pcSize, $mobSize);
 
-  width: 29%;
-  height: 90px;
+  width: $width;
+  height: $height;
   border-radius: 100px;
 
   border: none;
@@ -40,8 +46,30 @@
   color: $main-text;
   font-weight: 700;
 
+  background: $background;
+  transition: 0.3s;
+
   &:hover {
     cursor: pointer;
+
+    transform: translateY(-5px);
+  }
+}
+
+@mixin navButton($background: #fff) {
+  width: 70px; //5vw
+  height: 70px;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  background: $background;
+  transition: 0.3s;
+
+  z-index: 1000;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
   }
 }
 

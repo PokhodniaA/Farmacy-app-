@@ -13,7 +13,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  background: url("../assets/imgs/home/bg.jpg") no-repeat center;
+  background: url("../assets/imgs/common/bg.jpg") no-repeat center;
   background-size: cover;
   position: relative;
   overflow: hidden;
