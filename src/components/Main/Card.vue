@@ -60,6 +60,10 @@ export default {
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
+  @media screen and (max-width: 1024px) {
+    max-width: 500px;
+  }
+
   &__text {
     width: 78%;
     margin-top: 25px;

@@ -40,11 +40,11 @@ export default {
   position: relative;
 
   &__upperText {
-    // @include adaptiv-font(35, 25);
+    @include adaptiv-font(35, 20);
     font-weight: 300;
     line-height: 40.73px;
     color: $main-text;
-    font-size: 25px;
+
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
 
     position: absolute;
@@ -52,19 +52,15 @@ export default {
     top: 32.6%;
 
     margin: 0;
-
-    @media screen and (min-width: 768px) {
-      @include adaptiv-font(35, 25);
-    }
   }
 
   &__mainText {
-    // @include adaptiv-font(60, 40);
+    @include adaptiv-font(60, 30);
 
     font-weight: 700;
-    line-height: 50px;
+    line-height: 40px;
     color: $main-text;
-    font-size: 40px;
+
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
     -webkit-text-stroke: 1px #000;
 
@@ -74,18 +70,14 @@ export default {
 
     margin: 0;
 
-    @media screen and (min-width: 768px) {
-      @include adaptiv-font(60, 40);
+    @media screen and (min-width: 1024px) {
+      line-height: 66px;
     }
 
     span {
-      // @include adaptiv-font(70, 50);
-      font-size: 50px;
-      text-transform: uppercase;
+      @include adaptiv-font(70, 40);
 
-      @media screen and (min-width: 768px) {
-        @include adaptiv-font(70, 50);
-      }
+      text-transform: uppercase;
     }
   }
 

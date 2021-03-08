@@ -60,7 +60,7 @@ export default {
 
 .sidebar {
   background: $main-gradient;
-  height: 100vh;
+  height: 100%;
   position: relative;
 
   // Nav buttons
@@ -75,10 +75,15 @@ export default {
     position: absolute;
     right: 0px;
     left: 0px;
-    top: 42vh;
+    top: 42%;
     display: flex;
     flex-direction: column;
-    align-items: bottom;
+    align-items: flex-start;
+
+    @media screen and (max-width: 1224px) {
+      top: 22%;
+      align-items: center;
+    }
   }
 
   &__title {
@@ -88,12 +93,21 @@ export default {
     margin-left: 8.5%;
     font-weight: bold;
     line-height: 44px;
+
+    @media screen and (max-width: 1224px) {
+      margin-left: 0;
+    }
   }
 
   &__cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    @media screen and (max-width: 1224px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__card {
@@ -113,6 +127,10 @@ export default {
 
     &:first-child {
       margin-right: 20px;
+
+      @media screen and (max-width: 1224px) {
+        margin-right: 0;
+      }
     }
 
     &:last-child {

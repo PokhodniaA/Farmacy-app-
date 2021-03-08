@@ -84,6 +84,8 @@ export default {
 .game {
   position: relative;
 
+  height: 100%;
+
   &__field {
     display: flex;
     justify-content: center;
@@ -101,6 +103,10 @@ export default {
 
     display: flex;
     justify-content: space-around;
+
+    @media screen and (min-height: 1100px) {
+      height: 11%;
+    }
   }
 
   &__button {

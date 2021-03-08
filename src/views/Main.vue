@@ -35,6 +35,7 @@ export default {
 <style lang="scss" scoped>
 .main {
   display: flex;
+  height: 100%;
 
   &__sidebar {
     flex-basis: 32.6%;
