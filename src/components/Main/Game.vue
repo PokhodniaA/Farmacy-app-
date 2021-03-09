@@ -1,10 +1,22 @@
 <template>
   <div class="game">
     <div class="game__field">
-      <Card class="game__card" :user="users[getCurrentCard]" />
+      <transition
+        name="card"
+        leave-active-class="animateButton"
+        @after-leave="afterLeave"
+        appear
+      >
+        <Card
+          class="game__card"
+          :class="animateButton"
+          v-if="showCard"
+          :user="users[getCurrentCard]"
+        />
+      </transition>
     </div>
 
-    <div class="game__actions" @click="nextCard">
+    <div class="game__actions" @click="moveCard">
       <button class="game__button purple" data-btn="sad">Препарат 1</button>
       <button class="game__button blue" data-btn="happy">Препарат 2</button>
       <button class="game__button yellow" data-btn="heart">Препарат 3</button>
@@ -20,7 +32,16 @@ import routersMixin from "@/mixins/routers.js";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
-  data: () => ({}),
+  data: () => ({
+    showCard: true,
+    animateButton: "",
+    animations: {
+      sad: "medicine__sad",
+      happy: "medicine__happy",
+      heart: "medicine__heart",
+    },
+    lastButton: "",
+  }),
   methods: {
     ...mapMutations(["increaseCounter", "gameOver"]),
     buttonsActions() {
@@ -36,22 +57,33 @@ export default {
         },
       };
     },
-    nextCard(event) {
-      // Возможно переделать в конструкцию if-else
+    moveCard(event) {
       try {
-        const actions = this.buttonsActions();
-        const value = event.target.attributes["data-btn"].nodeValue;
-
-        if (this.getCurrentCard < this.getUsersLength - 1) {
-          actions[value]();
-        } else {
-          actions[value]();
-          this.showResults();
-        }
+        this.lastButton = event.target.attributes["data-btn"].nodeValue;
       } catch (error) {
         if (error.name !== "TypeError") {
           throw error;
         }
+      }
+
+      this.setMedicineClasse();
+      setTimeout(() => {
+        this.showCard = false;
+      }, 0);
+    },
+    setMedicineClasse() {
+      const value = this.lastButton;
+      this.animateButton = this.animations[value];
+    },
+    nextCard() {
+      const actions = this.buttonsActions();
+      const value = this.lastButton;
+
+      if (this.getCurrentCard < this.getUsersLength - 1) {
+        actions[value]();
+      } else {
+        actions[value]();
+        this.showResults();
       }
     },
     showResults() {
@@ -60,11 +92,20 @@ export default {
         this.toFinalPage();
       }
     },
+    // Animations
+    afterLeave: function () {
+      this.nextCard(this.lastButton);
+      this.animateButton = "";
+      this.showCard = true;
+    },
   },
   computed: {
     ...mapGetters(["getUsersLength", "getCounters"]),
     getCurrentCard() {
       return this.getCounters.sum;
+    },
+    getClassName() {
+      return [this.animateButton];
     },
   },
   components: {
@@ -83,7 +124,7 @@ export default {
 
 .game {
   position: relative;
-
+  overflow: hidden;
   height: 100%;
 
   &__field {
@@ -92,6 +133,11 @@ export default {
     align-items: center;
     width: 100%;
     height: 100% - 15%;
+  }
+
+  &__card {
+    position: relative;
+    opacity: 1;
   }
 
   &__actions {
@@ -125,4 +171,94 @@ export default {
 .yellow {
   background: $yellow-gradient;
 }
+
+.medicine {
+  &__sad {
+    animation: left-out 1s;
+
+    &::before {
+      @include medicine("Препарат 1", $purple-card);
+    }
+  }
+
+  &__happy {
+    animation: up-out 1s;
+
+    &::before {
+      @include medicine("Препарат 2", $blue-card);
+    }
+  }
+
+  &__heart {
+    animation: right-out 1s;
+
+    &::before {
+      @include medicine("Препарат 3", $yellow-card);
+    }
+  }
+}
+
+// Animations
+
+.card-enter-active {
+  transition: opacity 0.5s;
+}
+.card-enter {
+  opacity: 0;
+}
+
+// .card-leave-active {
+//   animation: left-out 1s;
+// }
+
+@keyframes left-out {
+  from {
+    transform: translateX(0) rotate(0);
+    opacity: 1;
+    z-index: -100;
+  }
+  to {
+    transform: translateX(-100%) rotate(-15deg);
+    opacity: 0;
+    z-index: -100;
+  }
+}
+
+@keyframes up-out {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+    z-index: -100;
+  }
+  to {
+    transform: translateY(-100%) rotate(-15deg);
+    opacity: 0;
+    z-index: -100;
+  }
+}
+
+@keyframes right-out {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+    z-index: -100;
+  }
+  to {
+    transform: translateX(100%) rotate(-15deg);
+    opacity: 0;
+    z-index: -100;
+  }
+}
+
+// @keyframes left-out {
+//   0% {
+//     transform: rotate(-15deg);
+//   }
+//   50% {
+//     transform: scale(1.5);
+//   }
+//   100% {
+//     transform: scale(1);
+//   }
+// }
 </style>

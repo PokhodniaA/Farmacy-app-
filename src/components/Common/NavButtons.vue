@@ -11,10 +11,17 @@ export default {};
 <style lang="scss" scoped>
 .navButtons {
   position: absolute;
-  left: 11%;
   top: 7vh;
-  width: 70px + 70px + 38px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  button {
+    margin-left: 38px;
+
+    &:first-child {
+      margin-left: 50px;
+    }
+  }
 }
 </style>

@@ -10,6 +10,6 @@
   min-width: 768px;
   // width: 1440px;
   height: 100vh;
-  min-height: 700px;
+  min-height: 768px;
 }
 </style>

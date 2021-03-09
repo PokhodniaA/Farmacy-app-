@@ -37,6 +37,7 @@
   $mobSize: 15,
   $width: 29%,
   $height: 90px,
+  $mobHeight: 10vw,
   $background: $grey-gradient
 ) {
   @include adaptiv-font($pcSize, $mobSize);
@@ -61,7 +62,8 @@
   }
 
   @media screen and (max-width: 900px) {
-    height: 10vw;
+    height: $mobHeight;
+    width: 29%;
   }
 }
 
@@ -84,8 +86,6 @@
 
 // Font
 
-// ---Delete---
-
 @mixin adaptiv-font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $maxWidth: $maxWidth - 768;
@@ -96,4 +96,26 @@
       #{$mobSize + px} + #{$addSize} * ((100vw - 768px) / #{$maxWidth})
     );
   }
+}
+
+// Card
+
+@mixin medicine($name, $background) {
+  content: $name;
+  width: 360px;
+  height: 120px;
+  border: 8px solid $background;
+
+  color: $background;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
 }

@@ -34,9 +34,10 @@ export default {
 
 .final {
   width: 100%;
-  min-height: 1024px;
+  height: 100%;
   position: relative;
   overflow: hidden;
+  // padding-bottom: 80px;
 
   // Buttons
 
@@ -45,10 +46,10 @@ export default {
   }
 
   &__retry {
-    @include additionButton(24, 16, 19%, 60px);
+    @include additionButton(24, 16, 18.75%, 60px, 7vw);
 
     position: absolute;
-    bottom: 84px;
+    bottom: 8.2%;
     left: 9%;
   }
 
@@ -62,8 +63,14 @@ export default {
     overflow: hidden;
     box-shadow: 0px 0px 40px #c4c4c4;
 
-    max-width: 820px;
-    max-height: 820px;
+    // max-width: 820px;
+    // max-height: 820px;
+
+    // width: 80vmin;
+    // height: 80vmin;
+
+    width: 57vmax;
+    height: 57vmax;
 
     &::before {
       content: "";
@@ -85,6 +92,12 @@ export default {
     position: absolute;
     top: 25.4%; //260px
     left: 9%; //130px
+
+    @media screen and (orientation: portrait) {
+      top: 39.4%;
+      left: 9%;
+      // width: 50%;
+    }
   }
 }
 </style>
