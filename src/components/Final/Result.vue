@@ -31,33 +31,28 @@
 import { mapGetters } from "vuex";
 
 export default {
-  data: () => ({ res: {} }),
   methods: {
     computeSales(sales, summary) {
-      return Math.round((sales * 100) / summary) || 0;
+      return Math.floor((sales * 100) / summary) || 0;
     },
   },
   computed: {
     ...mapGetters(["getCounters"]),
     getSad() {
-      const sales = this.res.sad;
-      const summary = this.res.sum;
+      const sales = this.getCounters.sad;
+      const summary = this.getCounters.sum;
       return this.computeSales(sales, summary);
     },
     getHappy() {
-      const sales = this.res.happy;
-      const summary = this.res.sum;
+      const sales = this.getCounters.happy;
+      const summary = this.getCounters.sum;
       return this.computeSales(sales, summary);
     },
     getHeart() {
-      const sales = this.res.heart;
-      const summary = this.res.sum;
+      const sales = this.getCounters.heart;
+      const summary = this.getCounters.sum;
       return this.computeSales(sales, summary);
     },
-  },
-  created() {
-    this.res = this.getCounters;
-    console.log(this.res, "res");
   },
 };
 </script>
@@ -82,11 +77,13 @@ export default {
 
   &__result {
     @include adaptiv-font(48, 24);
+
     line-height: 70px;
   }
 
   &__medications {
     @include adaptiv-font(16, 9);
+
     line-height: 20px;
     font-weight: 700;
   }
@@ -94,11 +91,11 @@ export default {
   &__title {
     @include adaptiv-font(32, 24);
 
+    margin-top: 40px;
+
     color: $purple-text;
     line-height: 44px;
     font-weight: bold;
-
-    margin-top: 40px;
 
     span {
       @include adaptiv-font(40, 36);
@@ -108,10 +105,10 @@ export default {
   &__subTitle {
     @include adaptiv-font(24, 16);
 
+    margin-top: 20px;
+
     color: $dark-text;
     line-height: 29px;
-
-    margin-top: 20px;
   }
 }
 </style>

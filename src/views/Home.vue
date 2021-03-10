@@ -15,17 +15,15 @@ export default {
 .home {
   background: url("../assets/imgs/common/bg.jpg") no-repeat center;
   background-size: cover;
+
   position: relative;
   overflow: hidden;
-  // min-height: 1024px;
   height: 100%;
-  // padding: 0 0 100% 0;
   width: 100%;
 
   &__round {
     position: absolute;
     left: 7.64%;
-    // left: 110px;
     top: -30px;
   }
 }

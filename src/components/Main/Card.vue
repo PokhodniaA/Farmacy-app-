@@ -53,12 +53,13 @@ export default {
   max-height: 590px;
   border-radius: 40px;
   overflow: hidden;
-  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #fff;
+
+  filter: $card-shadow;
 
   @media screen and (max-width: 1024px) {
     max-width: 500px;
@@ -71,17 +72,18 @@ export default {
   }
 
   &__title {
-    color: $purple-text;
-
     font-size: 32px;
     font-weight: 700;
     line-height: 39px;
+
+    color: $purple-text;
   }
 
   &__mainText {
     margin-top: 17px;
-    color: $dark-text;
     font-size: 24px;
+
+    color: $dark-text;
     line-height: 25px;
   }
 }

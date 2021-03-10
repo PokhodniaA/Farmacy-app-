@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <Sidebar class="main__sidebar" />
-    <Game class="main__content" :users="users" />
+    <Game class="main__content" :users="getUsers" />
   </div>
 </template>
 
@@ -13,18 +13,14 @@ import { mapGetters, mapMutations } from "vuex";
 import data from "@/assets/users/users.json";
 
 export default {
-  data: () => ({ users: [] }),
   methods: {
     ...mapMutations(["setUsers"]),
   },
   computed: mapGetters(["getUsersLength", "getUsers"]),
   components: { Sidebar, Game },
   created() {
-    this.users = this.getUsersLength ? this.getUsers : data;
-
-    if (this.getUsersLength) {
-      this.users = this.getUsers;
-    } else {
+    if (!this.getUsersLength) {
+      // if we haven't in the state users we get it
       this.users = data;
       this.setUsers(data);
     }

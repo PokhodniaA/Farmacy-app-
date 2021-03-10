@@ -17,9 +17,27 @@
     </div>
 
     <div class="game__actions" @click="moveCard">
-      <button class="game__button purple" data-btn="sad">Препарат 1</button>
-      <button class="game__button blue" data-btn="happy">Препарат 2</button>
-      <button class="game__button yellow" data-btn="heart">Препарат 3</button>
+      <button
+        class="game__button purple"
+        data-btn="sad"
+        :disabled="isButtonDisabled"
+      >
+        Препарат 1
+      </button>
+      <button
+        class="game__button blue"
+        data-btn="happy"
+        :disabled="isButtonDisabled"
+      >
+        Препарат 2
+      </button>
+      <button
+        class="game__button yellow"
+        data-btn="heart"
+        :disabled="isButtonDisabled"
+      >
+        Препарат 3
+      </button>
     </div>
   </div>
 </template>
@@ -41,6 +59,7 @@ export default {
       heart: "medicine__heart",
     },
     lastButton: "",
+    isButtonDisabled: false,
   }),
   methods: {
     ...mapMutations(["increaseCounter", "gameOver"]),
@@ -59,16 +78,18 @@ export default {
     },
     moveCard(event) {
       try {
-        this.lastButton = event.target.attributes["data-btn"].nodeValue;
+        this.lastButton = event.target.attributes["data-btn"].nodeValue; // which button was pushed.
+        this.isButtonDisabled = true;
       } catch (error) {
         if (error.name !== "TypeError") {
           throw error;
         }
       }
 
-      this.setMedicineClasse();
+      this.setMedicineClasse(); // add animate class
+
       setTimeout(() => {
-        this.showCard = false;
+        this.showCard = false; // hide card after animation
       }, 0);
     },
     setMedicineClasse() {
@@ -92,11 +113,14 @@ export default {
         this.toFinalPage();
       }
     },
+
     // Animations
     afterLeave: function () {
-      this.nextCard(this.lastButton);
+      // after animation incriese counter,  show next card and reset animation class
+      this.nextCard();
       this.animateButton = "";
       this.showCard = true;
+      this.isButtonDisabled = false;
     },
   },
   computed: {
@@ -207,58 +231,5 @@ export default {
   opacity: 0;
 }
 
-// .card-leave-active {
-//   animation: left-out 1s;
-// }
-
-@keyframes left-out {
-  from {
-    transform: translateX(0) rotate(0);
-    opacity: 1;
-    z-index: -100;
-  }
-  to {
-    transform: translateX(-100%) rotate(-15deg);
-    opacity: 0;
-    z-index: -100;
-  }
-}
-
-@keyframes up-out {
-  from {
-    transform: translateY(0) rotate(0);
-    opacity: 1;
-    z-index: -100;
-  }
-  to {
-    transform: translateY(-100%) rotate(-15deg);
-    opacity: 0;
-    z-index: -100;
-  }
-}
-
-@keyframes right-out {
-  from {
-    transform: translateY(0) rotate(0);
-    opacity: 1;
-    z-index: -100;
-  }
-  to {
-    transform: translateX(100%) rotate(-15deg);
-    opacity: 0;
-    z-index: -100;
-  }
-}
-
-// @keyframes left-out {
-//   0% {
-//     transform: rotate(-15deg);
-//   }
-//   50% {
-//     transform: scale(1.5);
-//   }
-//   100% {
-//     transform: scale(1);
-//   }
-// }
+@include animations-card;
 </style>

@@ -14,7 +14,7 @@ export default {
   mutations: {
     increaseCounter(state, key) {
       state.counters[key]++
-      state.counters.sum++ // возможно сделать проверку
+      state.counters.sum++
     },
     retryGame(state) {
       state.counters = {

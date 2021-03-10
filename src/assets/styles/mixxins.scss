@@ -5,23 +5,20 @@
 @mixin mainButton {
   @include adaptiv-font(36, 20);
 
-  background-color: #fff;
-
-  color: #8e9ad5;
-
-  font-family: "Montherat";
-  // font-family: Mon; Montherat  скачать
-  //   font-size: 36px;
-  font-weight: 700;
-  text-align: center;
-  border-radius: 100px;
-
   margin: 0;
   padding: 27px 0;
   width: 45%;
   max-height: 90px;
+
   border: none;
   outline: none;
+  background-color: #fff;
+  border-radius: 100px;
+
+  color: #8e9ad5;
+  font-family: "Montherat";
+  font-weight: 700;
+  text-align: center;
 
   transition: 0.3s;
 
@@ -44,15 +41,15 @@
 
   width: $width;
   height: $height;
-  border-radius: 100px;
 
+  border-radius: 100px;
   border: none;
   outline: none;
+  background: $background;
 
   color: $main-text;
   font-weight: 700;
 
-  background: $background;
   transition: 0.3s;
 
   &:hover {
@@ -68,15 +65,16 @@
 }
 
 @mixin navButton($background: #fff) {
-  width: 70px; //5vw
+  width: 70px;
   height: 70px;
+
   border-radius: 100%;
   border: none;
   outline: none;
   background: $background;
-  transition: 0.3s;
-
   z-index: 1000;
+
+  transition: 0.3s;
 
   &:hover {
     cursor: pointer;
@@ -104,18 +102,62 @@
   content: $name;
   width: 360px;
   height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
   border: 8px solid $background;
 
   color: $background;
   font-size: 52px;
   font-weight: 700;
   line-height: 51px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%) rotate(-30deg);
+}
+
+// Aniamtions
+
+@mixin animations-card {
+  @keyframes left-out {
+    from {
+      transform: translateX(0) rotate(0);
+      opacity: 1;
+      z-index: -100;
+    }
+    to {
+      transform: translateX(-100%) rotate(-15deg);
+      opacity: 0;
+      z-index: -100;
+    }
+  }
+
+  @keyframes up-out {
+    from {
+      transform: translateY(0) rotate(0);
+      opacity: 1;
+      z-index: -100;
+    }
+    to {
+      transform: translateY(-100%) rotate(-15deg);
+      opacity: 0;
+      z-index: -100;
+    }
+  }
+
+  @keyframes right-out {
+    from {
+      transform: translateY(0) rotate(0);
+      opacity: 1;
+      z-index: -100;
+    }
+    to {
+      transform: translateX(100%) rotate(15deg);
+      opacity: 0;
+      z-index: -100;
+    }
+  }
 }

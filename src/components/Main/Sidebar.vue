@@ -48,7 +48,6 @@ import navButtonsMixin from "@/mixins/navButtons.js";
 
 export default {
   components: { NavButtons },
-
   computed: mapGetters(["getUsersLength", "getCounters"]),
   mixins: [navButtonsMixin],
 };
@@ -59,9 +58,10 @@ export default {
 @import "@/assets/styles/mixxins.scss";
 
 .sidebar {
-  background: $main-gradient;
   height: 100%;
   position: relative;
+
+  background: $main-gradient;
 
   // Nav buttons
 
@@ -88,10 +88,11 @@ export default {
 
   &__title {
     @include adaptiv-font(36, 27);
-    color: #fff;
     margin-bottom: 33px;
     margin-left: 8.5%;
     font-weight: bold;
+
+    color: #fff;
     line-height: 44px;
 
     @media screen and (max-width: 1224px) {
@@ -113,11 +114,12 @@ export default {
   &__card {
     width: 190px;
     height: 80px;
+    padding: 10px;
+
     background-color: #fff;
     border-radius: 40px;
     box-shadow: 0px 0px 50px rgba(131, 42, 64, 0.4);
     position: relative;
-    padding: 10px;
 
     display: flex;
     justify-content: space-between;
@@ -145,34 +147,35 @@ export default {
   }
 
   &__cardCounter {
+    margin-right: 50px - 10px;
+
     color: #424242;
     font-weight: 700;
     font-size: 48px;
     line-height: 59px;
-    margin-right: 50px - 10px;
   }
 
   // Footer
 
   &__footer {
     @include adaptiv-font(36, 24);
+
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     min-height: 134px;
-    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    background: rgba(255, 255, 255, 0.15);
     color: #fff;
     font-weight: 300;
     line-height: 44px;
     letter-spacing: 0.02em;
     text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
 </style>

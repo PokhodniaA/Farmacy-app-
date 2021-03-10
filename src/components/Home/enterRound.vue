@@ -18,7 +18,7 @@ export default {
   methods: {
     ...mapMutations(["startGame"]),
     letsStart() {
-      this.startGame();
+      this.startGame(); // give acces to start game
       this.toMainPage();
     },
   },
@@ -31,21 +31,20 @@ export default {
 @import "@/assets/styles/mixxins.scss";
 
 .Round {
+  position: relative;
   width: 60vmax;
   height: 60vmax;
-  // min-width: 600px;
-  // min-height: 600px;
   border-radius: 100%;
+
   background: $main-gradient;
-  position: relative;
 
   &__upperText {
     @include adaptiv-font(35, 20);
+
     font-weight: 300;
     line-height: 40.73px;
     color: $main-text;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     position: absolute;
     left: 22%;
@@ -60,7 +59,6 @@ export default {
     font-weight: 700;
     line-height: 40px;
     color: $main-text;
-
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
     -webkit-text-stroke: 1px #000;
 

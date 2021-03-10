@@ -37,7 +37,6 @@ export default {
   height: 100%;
   position: relative;
   overflow: hidden;
-  // padding-bottom: 80px;
 
   // Buttons
 
@@ -61,13 +60,8 @@ export default {
     right: -150px;
     border-radius: 100%;
     overflow: hidden;
+
     box-shadow: 0px 0px 40px #c4c4c4;
-
-    // max-width: 820px;
-    // max-height: 820px;
-
-    // width: 80vmin;
-    // height: 80vmin;
 
     width: 57vmax;
     height: 57vmax;
@@ -79,6 +73,7 @@ export default {
       right: 0;
       top: 0;
       bottom: 0;
+
       background: $main-gradient;
       opacity: 0.25;
       z-index: 100;
@@ -88,15 +83,14 @@ export default {
   // Result
 
   &__result {
-    width: 40.3%;
     position: absolute;
-    top: 25.4%; //260px
-    left: 9%; //130px
+    width: 40.3%;
+    top: 25.4%;
+    left: 9%;
 
     @media screen and (orientation: portrait) {
       top: 39.4%;
       left: 9%;
-      // width: 50%;
     }
   }
 }
