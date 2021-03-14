@@ -20,7 +20,7 @@ export default {
   components: { Sidebar, Game },
   created() {
     if (!this.getUsersLength) {
-      // if we haven't in the state users we get it
+      // if we haven't in the state users we get it from JSON file.
       this.users = data;
       this.setUsers(data);
     }

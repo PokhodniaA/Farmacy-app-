@@ -116,7 +116,7 @@ export default {
 
     // Animations
     afterLeave: function () {
-      // after animation incriese counter,  show next card and reset animation class
+      // after end of animation incriese counter, show next card and reset animation class
       this.nextCard();
       this.animateButton = "";
       this.showCard = true;

@@ -18,7 +18,7 @@ export default {
   methods: {
     ...mapMutations(["startGame"]),
     letsStart() {
-      this.startGame(); // give acces to start game
+      this.startGame(); // give access to start game
       this.toMainPage();
     },
   },

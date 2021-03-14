@@ -1,4 +1,4 @@
-# farmacy-app
+# pharmacy-app
 
 ## Project setup
 ```
