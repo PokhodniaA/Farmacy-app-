@@ -27,3 +27,13 @@
   font-stretch: normal;
   unicode-range: U+0-10FFFF;
 }
+
+@font-face {
+  font-family: "Montherat";
+  src: url("../fonts/Montserrat\ bold.woff2") format("woff2"),
+    url("../fonts/Montserrat\ bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
