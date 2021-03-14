@@ -59,7 +59,7 @@ export default {
     font-weight: 700;
     line-height: 40px;
     color: $main-text;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); //1
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke: 1px #000;
 
     position: absolute;
